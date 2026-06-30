@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>H4CK3R_F1X | Тонкая настройка материи</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0c0f;
+      font-family: 'Courier New', 'Fira Code', monospace;
+      color: #b7e4b0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Эффект старого ЭЛТ-монитора */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 2px);
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.7;
+    }
+
+    /* Битый пиксель */
+    .dead-pixel {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: #ff00c8;
+      box-shadow: 0 0 8px #ff00c8;
+      z-index: 101;
+      pointer-events: none;
+      animation: wander 12s infinite alternate ease-in-out;
+      opacity: 0.9;
+      border-radius: 0;
+    }
+
+    @keyframes wander {
+      0% { top: 10%; left: 5%; }
+      20% { top: 80%; left: 90%; }
+      40% { top: 30%; left: 70%; }
+      60% { top: 70%; left: 20%; }
+      80% { top: 15%; left: 45%; }
+      100% { top: 85%; left: 8%; }
+    }
+
+    .terminal {
+      max-width: 850px;
+      width: 100%;
+      background: rgba(10, 15, 10, 0.9);
+      border: 1px solid #2d4a2d;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0, 255, 65, 0.15), inset 0 0 40px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 10;
+      margin: 0 auto;
+    }
+
+    .terminal-header {
+      background: #1a241a;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #2d4a2d;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .title {
+      margin-left: 0.8rem;
+      font-size: 0.75rem;
+      color: #5e7a5e;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .terminal-body {
+      padding: 1.8rem;
+      position: relative;
+    }
+
+    .prompt {
+      color: #00ff41;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .command {
+      color: #c5f0c5;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .ascii-art {
+      color: #4caf7a;
+      font-size: 0.7rem;
+      line-height: 1.2;
+      margin: 1.2rem 0 1.5rem;
+      text-shadow: 0 0 10px rgba(76, 175, 122, 0.5);
+      white-space: pre;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+      letter-spacing: 0.5px;
+    }
+
+    .typing {
+      display: inline-block;
+      border-right: 2px solid #00ff41;
+      animation: blink 0.9s infinite;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: #00ff41; }
+      50% { border-color: transparent; }
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .card {
+      background: #0e150e;
+      border: 1px solid #2f4a2f;
+      padding: 1.2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: #00ff41;
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.25);
+      transform: translateY(-2px);
+      background: #121a12;
+    }
+
+    .card h3 {
+      color: #8bc34a;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    .card p {
+      color: #b0c7b0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .highlight {
+      color: #f0e68c;
+      font-weight: bold;
+    }
+
+    .glitch-text {
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(90deg, #a0ffa0, #f0f0a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+
+    /* Блок контактов */
+    .contacts-block {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #0c130c;
+      border: 1px solid #2f4a2f;
+      border-radius: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #c5e0c5;
+      font-size: 0.9rem;
+      flex: 1 1 auto;
+    }
+
+    .contact-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      color: #6a8a6a;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-value {
+      color: #e0f0e0;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #3b6e3b;
+      color: #b7e4b0;
+      padding: 0.7rem 1.6rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.2s;
+      margin-top: 0.8rem;
+      display: inline-block;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: #1f3a1f;
+      border-color: #00ff41;
+      color: white;
+      box-shadow: 0 0 12px #00ff4155;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+      background: #2a4a2a;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #5a735a;
+      border-top: 1px dashed #2d4a2d;
+      padding-top: 1.2rem;
+      text-align: center;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .binary-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.06;
+      font-size: 0.7rem;
+      color: #00ff41;
+      overflow: hidden;
+    }
+
+    #secret-output {
+      margin-top: 1rem;
+      color: #ffcc80;
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+
+    /* Адаптивность */
+    @media screen and (max-width: 600px) {
+      body {
+        padding: 0.5rem;
+        align-items: flex-start;
+        padding-top: 1rem;
+      }
+
+      .terminal-body {
+        padding: 1.2rem 1rem;
+      }
+
+      .ascii-art {
+        font-size: 0.48rem;
+        margin: 0.8rem 0 1rem;
+        letter-spacing: 0;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+
+      .contacts-block {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.2rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+
+      .card h3 {
+        font-size: 1rem;
+      }
+
+      .card p {
+        font-size: 0.85rem;
+      }
+
+      .command {
+        font-size: 1rem;
+      }
+
+      .typing {
+        font-size: 0.85rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+      }
+
+      .terminal-header {
+        padding: 0.6rem 0.9rem;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      .ascii-art {
+        font-size: 0.38rem;
+      }
+      
+      .title {
+        font-size: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="binary-rain" id="rain" aria-hidden="true"></div>
+  <div class="dead-pixel" aria-hidden="true"></div>
+
+  <main class="terminal" role="main">
+    <div class="terminal-header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <span class="title">root@fixer_mainframe: ~/identity</span>
+    </div>
+    <div class="terminal-body">
+      <p><span class="prompt">➜</span> <span class="command">cat about_me.log</span></p>
+      
+      <div class="ascii-art" aria-label="ASCII логотип ARCHITECT">
+ █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗
+██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝
+███████║██████╔╝██║     ███████║██║   ██║   
+██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   
+██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+      </div>
+
+      <p>
+        <span class="prompt">></span> <span class="typing">Привет! Я тот самый мастер, который решит твою проблему с техникой.</span>
+      </p>
+
+      <div class="info-grid">
+        <div class="card">
+          <h3>🛠️ Ремонт и настройка ПК</h3>
+          <p>
+            Тормозит компьютер? Синий экран? Не включается? Я <span class="highlight">честно</span> диагностирую проблему и предложу лучшее решение -- от чистки и замены термопасты до переустановки системы и настройки драйверов. Работаю с ноутбуками и стационарными ПК.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🧠 Понятные консультации</h3>
+          <p>
+            Хочешь собрать новый ПК, но боишься ошибиться? Помогу подобрать совместимые комплектующие под <span class="highlight">твой бюджет и задачи</span>. Объясню всё человеческим языком -- без лишней технической воды. Игры, работа, монтаж -- подберём идеальную сборку.
+          </p>
+        </div>
+        <div class="card">
+          <h3>💾 Помощь с программами</h3>
+          <p>
+            Я программист, поэтому могу не только починить железо, но и помочь с софтом: настроить Windows или Linux, удалить вирусы, установить нужные программы, объяснить как пользоваться. Всё, чтобы ты чувствовал себя уверенно за компьютером.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🔧 Комплектующие и апгрейд</h3>
+          <p>
+            Поменять видеокарту, добавить памяти, установить быстрый SSD -- всё это я делаю аккуратно и с гарантией. Подскажу, что действительно стоит обновить, а что ещё послужит. Никаких лишних трат, только <span class="highlight">честные рекомендации</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Блок контактов -->
+      <div class="contacts-block">
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-label">Город и метро</div>
+            <div class="contact-value">Москва, м. Беломорская</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value">+7 (988) 540-03-38</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">✈️</span>
+          <div>
+            <div class="contact-label">Telegram</div>
+            <div class="contact-value">@katanworking</div>
+          </div>
+        </div>
+      </div>
+
+      <!--button class="btn" id="scanBtn" aria-label="Запустить диагностику">▶ Запустить диагностику (init_scan)</button>-->
+      <div id="secret-output" aria-live="polite"></div>
+
+      <div class="footer-note">
+        ⚡ <span class="highlight">Статус:</span> открыт к новым задачам · <span class="highlight">На связи:</span> ежедневно с 10:00 до 21:00 · <span class="highlight">Первая консультация:</span> бесплатно
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      // Бинарный дождь
+      const rainDiv = document.getElementById('rain');
+      if (rainDiv) {
+        function createRain() {
+          const fragment = document.createDocumentFragment();
+          const count = window.innerWidth < 600 ? 30 : 60;
+          
+          for (let i = 0; i < count; i++) {
+            const span = document.createElement('span');
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = 4 + Math.random() * 8;
+            
+            let binaryStr = '';
+            for (let j = 0; j < 10; j++) {
+              binaryStr += Math.random() > 0.5 ? '1' : '0';
+            }
+            
+            span.textContent = binaryStr;
+            span.style.cssText = `
+              position: absolute;
+              left: ${left}%;
+              top: -20px;
+              animation: drop ${duration}s ${delay}s linear infinite;
+              white-space: nowrap;
+              pointer-events: none;
+            `;
+            fragment.appendChild(span);
+          }
+          
+          rainDiv.innerHTML = '';
+          rainDiv.appendChild(fragment);
+        }
+
+        if (!document.getElementById('rain-style')) {
+          const styleDrop = document.createElement('style');
+          styleDrop.id = 'rain-style';
+          styleDrop.textContent = `
+            @keyframes drop {
+              0% { transform: translateY(-10vh); opacity: 0; }
+              10% { opacity: 1; }
+              90% { opacity: 1; }
+              100% { transform: translateY(110vh); opacity: 0; }
+            }
+          `;
+          document.head.appendChild(styleDrop);
+        }
+        
+        createRain();
+        
+        window.addEventListener('orientationchange', function() {
+          setTimeout(createRain, 100);
+        });
+      }
+
+      // Кнопка диагностики
+      const scanBtn = document.getElementById('scanBtn');
+      const output = document.getElementById('secret-output');
+      
+      if (scanBtn && output) {
+        const quotes = [
+          "[✓] Сканирование системы... Всё в порядке, но можно сделать ещё лучше.",
+          "[✓] Проверка контактов: на связи. Мастер готов ответить на вопросы.",
+          "[✓] Диагностика завершена. Рекомендация: не откладывай ремонт в долгий ящик.",
+          "[i] Совет дня: регулярная чистка от пыли продлевает жизнь компьютеру.",
+          "[✓] Всё работает. Если что-то идёт не так -- ты знаешь, кому написать."
+        ];
+        
+        scanBtn.addEventListener('click', function() {
+          const random = quotes[Math.floor(Math.random() * quotes.length)];
+          output.innerHTML = `<span style="font-family: monospace;">${random}</span>`;
+        });
+      }
+
+      // Мерцание пикселя
+      const deadPixel = document.querySelector('.dead-pixel');
+      if (deadPixel) {
+        setInterval(function() {
+          deadPixel.style.opacity = (Math.random() * 0.6 + 0.4).toString();
+        }, 500);
+      }
+    })();
+  </script>
+</body>
+</html>
