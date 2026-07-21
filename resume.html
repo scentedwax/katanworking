@@ -1,1 +1,606 @@
-gggc
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Резюме | DevOps / QA / Python | Москва</title>
+    <meta name="description" content="Резюме: DevOps, QA, Python-разработка. Опыт, навыки, стек технологий. Москва, метро Беломорская. Telegram: @katanworking">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="@katanworking">
+    <meta property="og:title" content="Резюме | DevOps / QA / Python | Москва">
+    <meta property="og:description" content="Резюме: DevOps, QA, Python-разработка. Опыт, навыки, стек технологий.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c0f;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            color: #b7e4b0;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.7;
+        }
+
+        .dead-pixel {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #ff00c8;
+            box-shadow: 0 0 8px #ff00c8;
+            z-index: 101;
+            pointer-events: none;
+            animation: wander 12s infinite alternate ease-in-out;
+            opacity: 0.9;
+            border-radius: 0;
+        }
+
+        @keyframes wander {
+            0% { top: 10%; left: 5%; }
+            20% { top: 80%; left: 90%; }
+            40% { top: 30%; left: 70%; }
+            60% { top: 70%; left: 20%; }
+            80% { top: 15%; left: 45%; }
+            100% { top: 85%; left: 8%; }
+        }
+
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            font-size: 0.7rem;
+            color: #00ff41;
+            overflow: hidden;
+        }
+
+        .terminal {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(10, 15, 10, 0.9);
+            border: 1px solid #2d4a2d;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 255, 65, 0.15), inset 0 0 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 10;
+            margin: 0 auto;
+        }
+
+        .terminal-header {
+            background: #1a241a;
+            padding: 0.7rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #2d4a2d;
+            border-radius: 12px 12px 0 0;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .title {
+            margin-left: 0.8rem;
+            font-size: 0.75rem;
+            color: #5e7a5e;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .lang-switch {
+            font-family: inherit;
+            font-size: 0.7rem;
+            color: #8bc34a;
+            background: transparent;
+            border: 1px solid #2d4a2d;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+        .lang-switch:hover {
+            background: #121a12;
+            border-color: #00ff41;
+            color: #00ff41;
+        }
+        .lang-switch:active {
+            transform: scale(0.95);
+        }
+
+        .terminal-body {
+            padding: 1.8rem;
+            position: relative;
+        }
+
+        .prompt {
+            color: #00ff41;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .command {
+            color: #c5f0c5;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .output-block {
+            margin: 0.8rem 0 1.8rem;
+            padding-left: 1.2rem;
+            border-left: 1px solid #2d4a2d;
+            color: #b0c7b0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .section-title {
+            color: #8bc34a;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2rem 0 0.8rem;
+            border-bottom: 1px dashed #2d4a2d;
+            padding-bottom: 0.4rem;
+        }
+
+        .highlight {
+            color: #f0e68c;
+            font-weight: bold;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #0e150e;
+            border: 1px solid #2f4a2f;
+            color: #c5e0c5;
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            margin: 0.2rem 0.3rem 0.2rem 0;
+            letter-spacing: 0.5px;
+        }
+        .tag:hover {
+            border-color: #00ff41;
+            background: #121a12;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid #2d4a2d;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: "●";
+            position: absolute;
+            left: -7px;
+            top: 0;
+            color: #8bc34a;
+            font-size: 0.8rem;
+        }
+        .timeline-date {
+            color: #5a7a5a;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+        .timeline-title {
+            color: #e0f0e0;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-desc {
+            color: #90a090;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .contact-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            color: #c5e0c5;
+            font-size: 0.9rem;
+        }
+        .contact-inline span {
+            color: #f0e68c;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid #3b6e3b;
+            color: #b7e4b0;
+            padding: 0.7rem 1.6rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            margin-top: 1.5rem;
+            display: inline-block;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+        .btn:hover {
+            background: #1f3a1f;
+            border-color: #00ff41;
+            color: white;
+            box-shadow: 0 0 12px #00ff4155;
+        }
+        .btn:active {
+            transform: scale(0.96);
+            background: #2a4a2a;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            font-size: 0.8rem;
+            color: #5a735a;
+            border-top: 1px dashed #2d4a2d;
+            padding-top: 1.2rem;
+            text-align: center;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .ascii-art {
+            color: #4caf7a;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            margin: 1.2rem 0 1.5rem;
+            text-shadow: 0 0 10px rgba(76, 175, 122, 0.5);
+            white-space: pre;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+            letter-spacing: 0.5px;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 0.5rem;
+                align-items: flex-start;
+                padding-top: 1rem;
+            }
+            .terminal-body {
+                padding: 1.2rem 1rem;
+            }
+            .ascii-art {
+                font-size: 0.48rem;
+                margin: 0.8rem 0 1rem;
+                letter-spacing: 0;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .output-block {
+                font-size: 0.82rem;
+                padding-left: 0.8rem;
+            }
+            .tag {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
+            }
+            .contact-inline {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem;
+            }
+            .terminal-header {
+                padding: 0.6rem 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            .ascii-art {
+                font-size: 0.38rem;
+            }
+            .title {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="binary-rain" id="rain" aria-hidden="true"></div>
+    <div class="dead-pixel" aria-hidden="true"></div>
+
+    <main class="terminal" role="main">
+        <div class="terminal-header">
+            <div class="header-left">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <span class="title">root@cv: ~/resume -- vim</span>
+            </div>
+            <button class="lang-switch" id="langToggle" aria-label="Переключить язык">EN</button>
+        </div>
+        <div class="terminal-body">
+
+            <!-- === ИМЯ И КОНТАКТЫ === -->
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/header.conf</span></p>
+            <div class="output-block">
+                <strong style="font-size:1.3rem;color:#e0f0e0;">ИМЯ ФАМИЛИЯ</strong><br>
+                <span style="color:#8bc34a;">DevOps / QA Engineer / Python Developer</span><br><br>
+                <div class="contact-inline">
+                    <div>📍 <span data-ru="Москва, м. Беломорская" data-en="Moscow, Belomorskaya metro">Москва, м. Беломорская</span></div>
+                    <div>📞 <span>+7 (988) 540-03-38</span></div>
+                    <div>✈️ <span>@katanworking</span></div>
+                    <div>📧 <span>katan@example.com</span></div>
+                    <div>🌐 <span>github.com/твой-юзернейм</span></div>
+                </div>
+            </div>
+
+            <!-- === ASCII-ЛОГОТИП === -->
+            <div class="ascii-art" aria-label="ASCII логотип">
+██╗  ██╗ █████╗ ████████╗ █████╗ ███╗   ██╗
+██║ ██╔╝██╔══██╗╚══██╔══╝██╔══██╗████╗  ██║
+█████╔╝ ███████║   ██║   ███████║██╔██╗ ██║
+██╔═██╗ ██╔══██║   ██║   ██╔══██║██║╚██╗██║
+██║  ██╗██║  ██║   ██║   ██║  ██║██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝
+            </div>
+
+            <!-- === ОБО МНЕ === -->
+            <div class="section-title" data-ru="// Обо мне" data-en="// About Me">// Обо мне</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/about.txt</span></p>
+            <div class="output-block" data-ru="DevOps-инженер с опытом работы Х лет. Специализируюсь на автоматизации инфраструктуры, CI/CD, контейнеризации и облачных сервисах. Имею опыт в тестировании (QA) и разработке на Python. Умею выстраивать процессы с нуля и доводить хаос до порядка. Ищу работу, где смогу применить свои навыки и расти дальше. Открыт к предложениям: фуллтайм, проектная работа, частичная занятость." data-en="DevOps engineer with X years of experience. Specializing in infrastructure automation, CI/CD, containerization and cloud services. Experienced in QA testing and Python development. Able to build processes from scratch and bring order to chaos. Looking for a job where I can apply my skills and grow further. Open to: full-time, project work, part-time.">
+                DevOps-инженер с опытом работы Х лет. Специализируюсь на автоматизации инфраструктуры, CI/CD, контейнеризации и облачных сервисах. Имею опыт в тестировании (QA) и разработке на Python. Умею выстраивать процессы с нуля и доводить хаос до порядка. Ищу работу, где смогу применить свои навыки и расти дальше. Открыт к предложениям: фуллтайм, проектная работа, частичная занятость.
+            </div>
+
+            <!-- === ОПЫТ РАБОТЫ === -->
+            <div class="section-title" data-ru="// Опыт работы" data-en="// Work Experience">// Опыт работы</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /var/log/work_history.log</span></p>
+            <div class="output-block">
+                <div class="timeline-item">
+                    <div class="timeline-date" data-ru="Январь 2023 -- Настоящее время" data-en="January 2023 -- Present">Январь 2023 -- Настоящее время</div>
+                    <div class="timeline-title" data-ru="DevOps-инженер / Название компании" data-en="DevOps Engineer / Company Name">DevOps-инженер / Название компании</div>
+                    <div class="timeline-desc" data-ru="Автоматизация CI/CD пайплайнов на GitLab CI / GitHub Actions. Контейнеризация сервисов (Docker, Docker Compose). Оркестрация (Kubernetes, Helm). Мониторинг (Prometheus, Grafana). Написание скриптов на Python и Bash. Взаимодействие с командой разработки из Х человек." data-en="Automation of CI/CD pipelines with GitLab CI / GitHub Actions. Containerization of services (Docker, Docker Compose). Orchestration (Kubernetes, Helm). Monitoring (Prometheus, Grafana). Writing scripts in Python and Bash. Working with a development team of X people.">
+                        Автоматизация CI/CD пайплайнов на GitLab CI / GitHub Actions. Контейнеризация сервисов (Docker, Docker Compose). Оркестрация (Kubernetes, Helm). Мониторинг (Prometheus, Grafana). Написание скриптов на Python и Bash. Взаимодействие с командой разработки из Х человек.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" data-ru="Июнь 2021 -- Декабрь 2022" data-en="June 2021 -- December 2022">Июнь 2021 -- Декабрь 2022</div>
+                    <div class="timeline-title" data-ru="QA Engineer / Название компании" data-en="QA Engineer / Company Name">QA Engineer / Название компании</div>
+                    <div class="timeline-desc" data-ru="Ручное и автоматизированное тестирование веб-приложений. Написание автотестов на Python (pytest, Selenium). Составление тестовой документации. Работа в Agile-команде." data-en="Manual and automated testing of web applications. Writing automated tests in Python (pytest, Selenium). Creating test documentation. Working in an Agile team.">
+                        Ручное и автоматизированное тестирование веб-приложений. Написание автотестов на Python (pytest, Selenium). Составление тестовой документации. Работа в Agile-команде.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" data-ru="Сентябрь 2019 -- Май 2021" data-en="September 2019 -- May 2021">Сентябрь 2019 -- Май 2021</div>
+                    <div class="timeline-title" data-ru="Python Developer / Фриланс" data-en="Python Developer / Freelance">Python Developer / Фриланс</div>
+                    <div class="timeline-desc" data-ru="Разработка ботов для Telegram, скриптов автоматизации, парсеров данных. Взаимодействие с заказчиками напрямую." data-en="Development of Telegram bots, automation scripts, data parsers. Direct interaction with clients.">
+                        Разработка ботов для Telegram, скриптов автоматизации, парсеров данных. Взаимодействие с заказчиками напрямую.
+                    </div>
+                </div>
+            </div>
+
+            <!-- === НАВЫКИ === -->
+            <div class="section-title" data-ru="// Навыки и стек" data-en="// Skills & Stack">// Навыки и стек</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/skills.json</span></p>
+            <div class="output-block">
+                <div class="two-col">
+                    <div>
+                        <strong style="color:#8bc34a;">DevOps:</strong><br>
+                        <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">CI/CD</span><span class="tag">GitLab CI</span><span class="tag">GitHub Actions</span><span class="tag">Jenkins</span><span class="tag">Terraform</span><span class="tag">Ansible</span>
+                    </div>
+                    <div>
+                        <strong style="color:#8bc34a;" data-ru="Cloud & Monitoring:" data-en="Cloud & Monitoring:">Cloud & Monitoring:</strong><br>
+                        <span class="tag">AWS</span><span class="tag">Yandex Cloud</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">ELK Stack</span><span class="tag">Nginx</span>
+                    </div>
+                </div>
+                <div style="margin-top:1rem;">
+                    <strong style="color:#8bc34a;" data-ru="QA & Тестирование:" data-en="QA & Testing:">QA & Тестирование:</strong><br>
+                    <span class="tag">pytest</span><span class="tag">Selenium</span><span class="tag">Playwright</span><span class="tag">Allure</span><span class="tag">Postman</span><span class="tag">Charles Proxy</span><span class="tag" data-ru="Тест-дизайн" data-en="Test Design">Тест-дизайн</span><span class="tag">REST API</span>
+                </div>
+                <div style="margin-top:1rem;">
+                    <strong style="color:#8bc34a;">Python & Scripting:</strong><br>
+                    <span class="tag">Python 3</span><span class="tag">Bash</span><span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">Requests</span><span class="tag">Aiogram</span><span class="tag">Pydantic</span>
+                </div>
+                <div style="margin-top:1rem;">
+                    <strong style="color:#8bc34a;" data-ru="Другое:" data-en="Other:">Другое:</strong><br>
+                    <span class="tag">Linux</span><span class="tag">Git</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">RabbitMQ</span><span class="tag">Agile/Scrum</span><span class="tag">Code Review</span>
+                </div>
+            </div>
+
+            <!-- === ОБРАЗОВАНИЕ === -->
+            <div class="section-title" data-ru="// Образование" data-en="// Education">// Образование</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/education.log</span></p>
+            <div class="output-block">
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 -- 2019</div>
+                    <div class="timeline-title" data-ru="Название вуза / колледжа" data-en="University / College Name">Название вуза / колледжа</div>
+                    <div class="timeline-desc" data-ru="Специальность: Информационные технологии / Программирование. Форма обучения: очная." data-en="Degree: Information Technology / Computer Science. Full-time.">
+                        Специальность: Информационные технологии / Программирование. Форма обучения: очная.
+                    </div>
+                </div>
+                <div style="margin-top:0.8rem;">
+                    <strong style="color:#8bc34a;" data-ru="Дополнительное:" data-en="Additional:">Дополнительное:</strong>
+                    <span data-ru="онлайн-курсы по DevOps, Kubernetes, автоматизации тестирования. Самообучение через документацию и реальные проекты." data-en="online courses in DevOps, Kubernetes, test automation. Self-education through documentation and real projects.">
+                        онлайн-курсы по DevOps, Kubernetes, автоматизации тестирования. Самообучение через документацию и реальные проекты.
+                    </span>
+                </div>
+            </div>
+
+            <!-- === ЯЗЫКИ === -->
+            <div class="section-title" data-ru="// Языки" data-en="// Languages">// Языки</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/languages.txt</span></p>
+            <div class="output-block">
+                🇷🇺 <span class="highlight">Русский</span> <span data-ru="-- родной" data-en="-- native">-- родной</span><br>
+                🇬🇧 <span class="highlight">English</span> -- B2
+            </div>
+
+            <!-- === ССЫЛКИ === -->
+            <div class="section-title" data-ru="// Ссылки и контакты" data-en="// Links & Contacts">// Ссылки и контакты</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/links.conf</span></p>
+            <div class="output-block">
+                🔗 <span class="highlight">Telegram:</span> @katanworking<br>
+                🔗 <span class="highlight">GitHub:</span> github.com/твой-юзернейм<br>
+                🔗 <span class="highlight">Email:</span> katan@example.com<br>
+                🔗 <span class="highlight" data-ru="Сайт-визитка:" data-en="Website:">Сайт-визитка:</span> <a href="index.html" style="color:#8bc34a;text-decoration:underline;" data-ru="перейти на главную" data-en="go to main page">перейти на главную</a>
+            </div>
+
+            <div class="footer-note">
+                ⚡ <span class="highlight" data-ru="Статус:" data-en="Status:">Статус:</span> <span data-ru="активно ищу работу" data-en="actively looking for a job">активно ищу работу</span> ·
+                <span class="highlight" data-ru="Готовность:" data-en="Availability:">Готовность:</span> <span data-ru="полный день / проекты / частичная занятость" data-en="full-time / projects / part-time">полный день / проекты / частичная занятость</span> ·
+                <span class="highlight" data-ru="Обновлено:" data-en="Updated:">Обновлено:</span> <span data-ru="июль 2026" data-en="July 2026">июль 2026</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            // Бинарный дождь
+            const rainDiv = document.getElementById('rain');
+            if (rainDiv) {
+                function createRain() {
+                    const fragment = document.createDocumentFragment();
+                    const count = window.innerWidth < 600 ? 30 : 60;
+                    
+                    for (let i = 0; i < count; i++) {
+                        const span = document.createElement('span');
+                        const left = Math.random() * 100;
+                        const delay = Math.random() * 5;
+                        const duration = 4 + Math.random() * 8;
+                        
+                        let binaryStr = '';
+                        for (let j = 0; j < 10; j++) {
+                            binaryStr += Math.random() > 0.5 ? '1' : '0';
+                        }
+                        
+                        span.textContent = binaryStr;
+                        span.style.cssText = `
+                            position: absolute;
+                            left: ${left}%;
+                            top: -20px;
+                            animation: drop ${duration}s ${delay}s linear infinite;
+                            white-space: nowrap;
+                            pointer-events: none;
+                        `;
+                        fragment.appendChild(span);
+                    }
+                    
+                    rainDiv.innerHTML = '';
+                    rainDiv.appendChild(fragment);
+                }
+
+                if (!document.getElementById('rain-style')) {
+                    const styleDrop = document.createElement('style');
+                    styleDrop.id = 'rain-style';
+                    styleDrop.textContent = `
+                        @keyframes drop {
+                            0% { transform: translateY(-10vh); opacity: 0; }
+                            10% { opacity: 1; }
+                            90% { opacity: 1; }
+                            100% { transform: translateY(110vh); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(styleDrop);
+                }
+                
+                createRain();
+                
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(createRain, 100);
+                });
+            }
+
+            // Переключатель языка
+            const langToggle = document.getElementById('langToggle');
+            let currentLang = 'ru';
+
+            function switchLanguage(lang) {
+                const elements = document.querySelectorAll('[data-ru][data-en]');
+                elements.forEach(function(el) {
+                    const newContent = el.getAttribute('data-' + lang);
+                    if (newContent !== null) {
+                        if (newContent.includes('<') && newContent.includes('>')) {
+                            el.innerHTML = newContent;
+                        } else {
+                            el.textContent = newContent;
+                        }
+                    }
+                });
+
+                langToggle.textContent = lang === 'ru' ? 'EN' : 'RU';
+            }
+
+            langToggle.addEventListener('click', function() {
+                currentLang = currentLang === 'ru' ? 'en' : 'ru';
+                switchLanguage(currentLang);
+            });
+
+            // Мерцание пикселя
+            const deadPixel = document.querySelector('.dead-pixel');
+            if (deadPixel) {
+                setInterval(function() {
+                    deadPixel.style.opacity = (Math.random() * 0.6 + 0.4).toString();
+                }, 500);
+            }
+        })();
+    </script>
+</body>
+</html>
