@@ -367,6 +367,149 @@
                 font-size: 0.65rem;
             }
         }
+
+        /* === СТИЛИ ДЛЯ ПЕЧАТИ === */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+            }
+
+            body::before {
+                display: none !important;
+            }
+
+            .binary-rain {
+                display: none !important;
+            }
+
+            .dead-pixel {
+                display: none !important;
+            }
+
+            .terminal {
+                max-width: 100% !important;
+                width: 100% !important;
+                background: #ffffff !important;
+                border: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                margin: 0 !important;
+            }
+
+            .terminal-header {
+                background: #eeeeee !important;
+                border-bottom: 2px solid #000000 !important;
+                border-radius: 0 !important;
+                padding: 0.5rem 1rem !important;
+            }
+
+            .dot.red,
+            .dot.yellow,
+            .dot.green {
+                background: #000000 !important;
+            }
+
+            .title {
+                color: #000000 !important;
+            }
+
+            .lang-switch {
+                display: none !important;
+            }
+
+            .terminal-body {
+                padding: 1rem !important;
+            }
+
+            .prompt {
+                color: #000000 !important;
+            }
+
+            .command {
+                color: #000000 !important;
+            }
+
+            .output-block {
+                color: #000000 !important;
+                border-left: 2px solid #000000 !important;
+            }
+
+            .section-title {
+                color: #000000 !important;
+                border-bottom: 2px solid #000000 !important;
+            }
+
+            .highlight {
+                color: #000000 !important;
+                font-weight: bold !important;
+            }
+
+            .tag {
+                background: #ffffff !important;
+                border: 1px solid #000000 !important;
+                color: #000000 !important;
+            }
+
+            .timeline-item {
+                border-left: 2px solid #000000 !important;
+            }
+
+            .timeline-item::before {
+                color: #000000 !important;
+            }
+
+            .timeline-date {
+                color: #000000 !important;
+            }
+
+            .timeline-title {
+                color: #000000 !important;
+            }
+
+            .timeline-desc {
+                color: #000000 !important;
+            }
+
+            .contact-inline {
+                color: #000000 !important;
+            }
+
+            .contact-inline span {
+                color: #000000 !important;
+            }
+
+            .btn {
+                display: none !important;
+            }
+
+            .btn-full {
+                display: none !important;
+            }
+
+            .footer-note {
+                color: #000000 !important;
+                border-top: 2px solid #000000 !important;
+            }
+
+            .ascii-art {
+                color: #000000 !important;
+                text-shadow: none !important;
+            }
+
+            a {
+                color: #000000 !important;
+                text-decoration: underline !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -433,7 +576,7 @@
                 <div class="two-col">
                     <div>
                         <strong style="color:#8bc34a;">DevOps:</strong><br>
-                        <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD (Drone CI)</span><span class="tag">Terraform</span></span><span class="tag">Vault</span>
+                        <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD (Drone CI)</span><span class="tag">Terraform</span><span class="tag">Vault</span>
                     </div>
                     <div>
                         <strong style="color:#8bc34a;" data-ru="Monitoring:" data-en="Monitoring:">Monitoring:</strong><br>
@@ -491,7 +634,7 @@
                 🔗 <span class="highlight">Phone:</span> +7 (993) 609-03-27<br>
             </div>
 
-<button class="btn btn-full" onclick="window.print()" data-ru="🖨️ Версия для печати" data-en="🖨️ Print version">🖨️ Версия для печати</button>
+            <button class="btn btn-full" onclick="window.print()" data-ru="🖨️ Версия для печати" data-en="🖨️ Print version">🖨️ Версия для печати</button>
 
             <div class="footer-note">
                 ⚡ <span class="highlight" data-ru="Статус:" data-en="Status:">Статус:</span> <span data-ru="активно ищу работу" data-en="actively looking for a job">активно ищу работу</span> ·
