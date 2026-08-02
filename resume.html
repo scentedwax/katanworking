@@ -546,6 +546,60 @@
                 color: #000000 !important;
             }
         }
+
+        /* === РАСКРЫВАЮЩИЕСЯ ХОББИ === */
+        .hobby-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .hobby-item {
+            border-bottom: 1px solid #1a2a1a;
+        }
+
+        .hobby-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.2s;
+        }
+
+        .hobby-header:hover {
+            color: #c5f0c5;
+        }
+
+        .hobby-header:hover .hobby-arrow {
+            color: #8bc34a;
+        }
+
+        .hobby-arrow {
+            font-size: 0.7rem;
+            color: #5a7a5a;
+            transition: transform 0.2s;
+            display: inline-block;
+            width: 14px;
+        }
+
+        .hobby-item.open .hobby-arrow {
+            transform: rotate(90deg);
+        }
+
+        .hobby-content {
+            display: none;
+            padding: 0.3rem 0 0.6rem 1.5rem;
+            font-size: 0.82rem;
+            color: #a0c0a0;
+            line-height: 1.6;
+        }
+
+        .hobby-item.open .hobby-content {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -639,6 +693,70 @@
                 <div style="margin-top:1rem;">
                     <strong style="color:#8bc34a;" data-ru="Другое:" data-en="Other:">Другое:</strong><br>
                     <span class="tag">Linux</span><span class="tag">Git</span><span class="tag">Agile/Scrum</span><span class="tag">Code Review</span>
+                </div>
+            </div>
+
+            <!-- === ХОББИ & ИНТЕРЕСЫ === -->
+            <div class="section-title" data-ru="// Хобби & Интересы" data-en="// Hobbies & Interests">// Хобби & Интересы</div>
+            <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/hobbies.log</span></p>
+            <div class="output-block">
+                <div class="hobby-list">
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🔧 Электроника и пайка" data-en="🔧 Electronics & Soldering">🔧 Электроника и пайка</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Паяю платы, работаю с мелкими компонентами. Понимаю железо на уровне схем — от мультиметра до осциллографа." data-en="Soldering PCBs, working with small components. I understand hardware at the circuit level — from multimeter to oscilloscope.">
+                            Паяю платы, работаю с мелкими компонентами. Понимаю железо на уровне схем — от мультиметра до осциллографа.
+                        </div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🎵 Музыка" data-en="🎵 Music">🎵 Музыка</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Пишу и свожу музыку. Интересуюсь саундтреками к фильмам — как музыка работает на атмосферу и эмоции." data-en="Writing and mixing music. Interested in film soundtracks — how music creates atmosphere and emotion.">
+                            Пишу и свожу музыку. Интересуюсь саундтреками к фильмам — как музыка работает на атмосферу и эмоции.
+                        </div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🏠 Умные устройства" data-en="🏠 Smart Home">🏠 Умные устройства</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Собираю и настраиваю умные устройства. Автоматизация дома — это DevOps в миниатюре: датчики, сценарии, алерты." data-en="Building and configuring smart home devices. Home automation is DevOps in miniature: sensors, scripts, alerts.">
+                            Собираю и настраиваю умные устройства. Автоматизация дома — это DevOps в миниатюре: датчики, сценарии, алерты.
+                        </div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🐾 Домашние животные" data-en="🐾 Pets">🐾 Домашние животные</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Живёт попугай. Люблю кошек, собак и хорьков — в общем, любую живность." data-en="I have a parrot. Love cats, dogs, and ferrets — basically any animal.">
+                            Живёт попугай. Люблю кошек, собак и хорьков — в общем, любую живность.
+                        </div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🎲 Настольные игры" data-en="🎲 Board Games">🎲 Настольные игры</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Люблю стратегии и кооперативные настолки. Хороший способ прокачать логику и договориться с командой." data-en="Love strategy and cooperative board games. A great way to train logic and team negotiation.">
+                            Люблю стратегии и кооперативные настолки. Хороший способ прокачать логику и договориться с командой.
+                        </div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🎨 3D-моделирование" data-en="🎨 3D Modeling">🎨 3D-моделирование</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Моделирую в свободное время. Нравится создавать что-то из ничего — от идеи до готовой модели." data-en="Modeling in my free time. Love creating something from nothing — from idea to finished model.">
+                            Моделирую в свободное время. Нравится создавать что-то из ничего — от идеи до готовой модели.
+                        </div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-header" onclick="this.parentElement.classList.toggle('open')">
+                            <span class="hobby-arrow">▸</span> <span class="tag" data-ru="🎮 Геймдев и игры" data-en="🎮 Gamedev & Gaming">🎮 Геймдев и игры</span>
+                        </div>
+                        <div class="hobby-content" data-ru="Интересуюсь геймдевом — механиками, движками, нарративом. Играю в разные жанры: от инди до AAA." data-en="Interested in gamedev — mechanics, engines, narrative. Play across genres: from indie to AAA.">
+                            Интересуюсь геймдевом — механиками, движками, нарративом. Играю в разные жанры: от инди до AAA.
+                        </div>
+                    </div>
                 </div>
             </div>
 
