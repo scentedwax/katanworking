@@ -374,13 +374,13 @@
                 size: A4;
                 margin: 12mm;
             }
-        
+
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
                 color-adjust: exact !important;
             }
-        
+
             html, body {
                 background: #ffffff !important;
                 background-color: #ffffff !important;
@@ -391,16 +391,16 @@
                 font-size: 11pt !important;
                 color: #000000 !important;
             }
-        
+
             body::before {
                 display: none !important;
             }
-        
+
             .binary-rain,
             .dead-pixel {
                 display: none !important;
             }
-        
+
             .terminal {
                 max-width: 100% !important;
                 width: 100% !important;
@@ -413,7 +413,7 @@
                 margin: 0 !important;
                 padding: 0 !important;
             }
-        
+
             .terminal-header {
                 background: #f5f5f5 !important;
                 background-color: #f5f5f5 !important;
@@ -421,127 +421,127 @@
                 border-radius: 0 !important;
                 padding: 0.5rem 1rem !important;
             }
-        
+
             .dot.red,
             .dot.yellow,
             .dot.green {
                 background: #000000 !important;
                 background-color: #000000 !important;
             }
-        
+
             .title {
                 color: #000000 !important;
             }
-        
+
             .lang-switch {
                 display: none !important;
             }
-        
+
             .terminal-body {
                 padding: 1rem 0.5rem !important;
                 background: #ffffff !important;
                 background-color: #ffffff !important;
             }
-        
+
             .prompt {
                 color: #000000 !important;
             }
-        
+
             .command {
                 color: #000000 !important;
             }
-        
+
             .output-block {
                 color: #000000 !important;
                 background: #ffffff !important;
                 border-left: 2px solid #000000 !important;
             }
-        
+
             .section-title {
                 color: #000000 !important;
                 background: #ffffff !important;
                 border-bottom: 2px solid #000000 !important;
             }
-        
+
             .highlight {
                 color: #000000 !important;
                 font-weight: bold !important;
                 background: none !important;
             }
-        
+
             .tag {
                 background: #ffffff !important;
                 background-color: #ffffff !important;
                 border: 1px solid #000000 !important;
                 color: #000000 !important;
             }
-        
+
             .timeline-item {
                 border-left: 2px solid #000000 !important;
                 background: #ffffff !important;
             }
-        
+
             .timeline-item::before {
                 color: #000000 !important;
             }
-        
+
             .timeline-date {
                 color: #333333 !important;
             }
-        
+
             .timeline-title {
                 color: #000000 !important;
             }
-        
+
             .timeline-desc {
                 color: #111111 !important;
                 background: #ffffff !important;
             }
-        
+
             .two-col {
                 background: #ffffff !important;
             }
-        
+
             .contact-inline {
                 color: #000000 !important;
                 background: #ffffff !important;
             }
-        
+
             .contact-inline span {
                 color: #000000 !important;
             }
-        
+
             .btn,
             .btn-full {
                 display: none !important;
             }
-        
+
             .footer-note {
                 color: #000000 !important;
                 background: #ffffff !important;
                 border-top: 2px solid #000000 !important;
             }
-        
+
             .ascii-art {
                 color: #000000 !important;
                 text-shadow: none !important;
                 background: #ffffff !important;
             }
-        
+
             a {
                 color: #000000 !important;
                 text-decoration: underline !important;
             }
-        
+
             strong {
                 color: #000000 !important;
             }
-        
+
             /* Принудительно перекрашиваем всё, что могло остаться зелёным */
             span, div, p {
                 color: #000000 !important;
             }
-        
+
             .highlight {
                 color: #000000 !important;
             }
@@ -615,7 +615,7 @@
                         <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD (Drone CI)</span><span class="tag">Terraform</span><span class="tag">Vault</span>
                     </div>
                     <div>
-                        <strong style="color:#8bc34a;" data-ru="Monitoring:" data-en="Monitoring:">Monitoring:</strong><br>
+                        <strong style="color:#8bc34a;" data-ru="Мониторинг:" data-en="Monitoring:">Мониторинг:</strong><br>
                         <span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Nginx</span>
                     </div>
                 </div>
@@ -626,6 +626,15 @@
                 <div style="margin-top:1rem;">
                     <strong style="color:#8bc34a;">Python & Scripting:</strong><br>
                     <span class="tag">Python 3</span><span class="tag">Bash</span><span class="tag">Kivy</span><span class="tag">FastAPI</span><span class="tag">Requests</span><span class="tag">Qt (Desktop Applications)</span>
+                </div>
+                <div style="margin-top:1rem;">
+                    <strong style="color:#8bc34a;" data-ru="Железо & Электроника:" data-en="Hardware & Electronics:">Железо & Электроника:</strong><br>
+                    <span class="tag" data-ru="Пайка" data-en="Soldering">Пайка</span>
+                    <span class="tag" data-ru="Ремонт плат" data-en="PCB Repair">Ремонт плат</span>
+                    <span class="tag" data-ru="Мелкая электроника" data-en="Small Electronics">Мелкая электроника</span>
+                    <span class="tag" data-ru="Робототехника" data-en="Robotics">Робототехника</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Raspberry Pi</span>
                 </div>
                 <div style="margin-top:1rem;">
                     <strong style="color:#8bc34a;" data-ru="Другое:" data-en="Other:">Другое:</strong><br>
@@ -688,18 +697,18 @@
                 function createRain() {
                     const fragment = document.createDocumentFragment();
                     const count = window.innerWidth < 600 ? 30 : 60;
-                    
+
                     for (let i = 0; i < count; i++) {
                         const span = document.createElement('span');
                         const left = Math.random() * 100;
                         const delay = Math.random() * 5;
                         const duration = 4 + Math.random() * 8;
-                        
+
                         let binaryStr = '';
                         for (let j = 0; j < 10; j++) {
                             binaryStr += Math.random() > 0.5 ? '1' : '0';
                         }
-                        
+
                         span.textContent = binaryStr;
                         span.style.cssText = `
                             position: absolute;
@@ -711,7 +720,7 @@
                         `;
                         fragment.appendChild(span);
                     }
-                    
+
                     rainDiv.innerHTML = '';
                     rainDiv.appendChild(fragment);
                 }
@@ -729,9 +738,9 @@
                     `;
                     document.head.appendChild(styleDrop);
                 }
-                
+
                 createRain();
-                
+
                 window.addEventListener('orientationchange', function() {
                     setTimeout(createRain, 100);
                 });
