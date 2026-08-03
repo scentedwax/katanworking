@@ -6,11 +6,7 @@
     <title>Резюме</title>
     <meta name="description" content="Резюме: DevOps, QA, Python-разработка. Опыт, навыки, стек технологий. Москва, метро Беломорская. Telegram: @ktoetotchel">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="@ktoetotchel">
-    <meta property="og:title" content="Резюме | DevOps / QA / Python | Москва">
-    <meta property="og:description" content="Резюме: DevOps, QA, Python-разработка. Опыт, навыки, стек технологий.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ru_RU">
+
     <style>
         * {
             margin: 0;
@@ -23,12 +19,11 @@
             font-family: 'Courier New', 'Fira Code', monospace;
             color: #b7e4b0;
             min-height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 1rem;
+            padding: 0;
+            margin: 0;
             position: relative;
             overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
         }
 
         body::before {
@@ -54,7 +49,6 @@
             pointer-events: none;
             animation: wander 12s infinite alternate ease-in-out;
             opacity: 0.9;
-            border-radius: 0;
         }
 
         @keyframes wander {
@@ -81,27 +75,25 @@
         }
 
         .terminal {
-            max-width: 900px;
             width: 100%;
             background: rgba(10, 15, 10, 0.9);
-            border: 1px solid #2d4a2d;
-            border-radius: 12px;
             box-shadow: 0 0 40px rgba(0, 255, 65, 0.15), inset 0 0 40px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
             position: relative;
             z-index: 10;
-            margin: 0 auto;
+            margin: 0;
+            transition: background 0.3s, box-shadow 0.3s;
         }
 
         .terminal-header {
             background: #1a241a;
-            padding: 0.7rem 1.2rem;
+            padding: 0.7rem 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             border-bottom: 1px solid #2d4a2d;
-            border-radius: 12px 12px 0 0;
             justify-content: space-between;
+            transition: background 0.3s, border-color 0.3s;
         }
 
         .header-left {
@@ -130,7 +122,7 @@
             text-overflow: ellipsis;
         }
 
-        .lang-switch {
+        .lang-switch, .theme-toggle {
             font-family: inherit;
             font-size: 0.7rem;
             color: #8bc34a;
@@ -141,21 +133,19 @@
             cursor: pointer;
             letter-spacing: 1px;
             transition: all 0.2s;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
             user-select: none;
         }
-        .lang-switch:hover {
+        .lang-switch:hover, .theme-toggle:hover {
             background: #121a12;
             border-color: #00ff41;
             color: #00ff41;
         }
-        .lang-switch:active {
+        .lang-switch:active, .theme-toggle:active {
             transform: scale(0.95);
         }
 
         .terminal-body {
-            padding: 1.8rem;
+            padding: 1.8rem 1rem;
             position: relative;
         }
 
@@ -164,7 +154,6 @@
             font-weight: bold;
             margin-right: 0.5rem;
         }
-
         .command {
             color: #c5f0c5;
             font-weight: bold;
@@ -275,8 +264,6 @@
             margin-top: 1.5rem;
             display: inline-block;
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
             user-select: none;
         }
         .btn:hover {
@@ -321,12 +308,10 @@
 
         @media screen and (max-width: 600px) {
             body {
-                padding: 0.5rem;
-                align-items: flex-start;
-                padding-top: 1rem;
+                padding: 0;
             }
             .terminal-body {
-                padding: 1.2rem 1rem;
+                padding: 1.2rem 0.8rem;
             }
             .ascii-art {
                 font-size: 0.48rem;
@@ -355,7 +340,7 @@
                 padding: 0.8rem;
             }
             .terminal-header {
-                padding: 0.6rem 0.9rem;
+                padding: 0.6rem 0.8rem;
             }
         }
 
@@ -368,196 +353,15 @@
             }
         }
 
-        /* === СТИЛИ ДЛЯ ПЕЧАТИ === */
-        @media print {
-            @page {
-                size: A4;
-                margin: 12mm;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            html, body {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                display: block !important;
-                width: 100% !important;
-                font-size: 11pt !important;
-                color: #000000 !important;
-            }
-
-            body::before {
-                display: none !important;
-            }
-
-            .binary-rain,
-            .dead-pixel {
-                display: none !important;
-            }
-
-            .terminal {
-                max-width: 100% !important;
-                width: 100% !important;
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                border: none !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                backdrop-filter: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .terminal-header {
-                background: #f5f5f5 !important;
-                background-color: #f5f5f5 !important;
-                border-bottom: 2px solid #000000 !important;
-                border-radius: 0 !important;
-                padding: 0.5rem 1rem !important;
-            }
-
-            .dot.red,
-            .dot.yellow,
-            .dot.green {
-                background: #000000 !important;
-                background-color: #000000 !important;
-            }
-
-            .title {
-                color: #000000 !important;
-            }
-
-            .lang-switch {
-                display: none !important;
-            }
-
-            .terminal-body {
-                padding: 1rem 0.5rem !important;
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-            }
-
-            .prompt {
-                color: #000000 !important;
-            }
-
-            .command {
-                color: #000000 !important;
-            }
-
-            .output-block {
-                color: #000000 !important;
-                background: #ffffff !important;
-                border-left: 2px solid #000000 !important;
-            }
-
-            .section-title {
-                color: #000000 !important;
-                background: #ffffff !important;
-                border-bottom: 2px solid #000000 !important;
-            }
-
-            .highlight {
-                color: #000000 !important;
-                font-weight: bold !important;
-                background: none !important;
-            }
-
-            .tag {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                border: 1px solid #000000 !important;
-                color: #000000 !important;
-            }
-
-            .timeline-item {
-                border-left: 2px solid #000000 !important;
-                background: #ffffff !important;
-            }
-
-            .timeline-item::before {
-                color: #000000 !important;
-            }
-
-            .timeline-date {
-                color: #333333 !important;
-            }
-
-            .timeline-title {
-                color: #000000 !important;
-            }
-
-            .timeline-desc {
-                color: #111111 !important;
-                background: #ffffff !important;
-            }
-
-            .two-col {
-                background: #ffffff !important;
-            }
-
-            .contact-inline {
-                color: #000000 !important;
-                background: #ffffff !important;
-            }
-
-            .contact-inline span {
-                color: #000000 !important;
-            }
-
-            .btn,
-            .btn-full {
-                display: none !important;
-            }
-
-            .footer-note {
-                color: #000000 !important;
-                background: #ffffff !important;
-                border-top: 2px solid #000000 !important;
-            }
-
-            .ascii-art {
-                color: #000000 !important;
-                text-shadow: none !important;
-                background: #ffffff !important;
-            }
-
-            a {
-                color: #000000 !important;
-                text-decoration: underline !important;
-            }
-
-            strong {
-                color: #000000 !important;
-            }
-
-            /* Принудительно перекрашиваем всё, что могло остаться зелёным */
-            span, div, p {
-                color: #000000 !important;
-            }
-
-            .highlight {
-                color: #000000 !important;
-            }
-        }
-
         /* === РАСКРЫВАЮЩИЕСЯ ХОББИ === */
         .hobby-list {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
         }
-
         .hobby-item {
             border-bottom: 1px solid #1a2a1a;
         }
-
         .hobby-header {
             display: flex;
             align-items: center;
@@ -565,18 +369,14 @@
             padding: 0.4rem 0;
             cursor: pointer;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
             transition: all 0.2s;
         }
-
         .hobby-header:hover {
             color: #c5f0c5;
         }
-
         .hobby-header:hover .hobby-arrow {
             color: #8bc34a;
         }
-
         .hobby-arrow {
             font-size: 0.7rem;
             color: #5a7a5a;
@@ -584,11 +384,9 @@
             display: inline-block;
             width: 14px;
         }
-
         .hobby-item.open .hobby-arrow {
             transform: rotate(90deg);
         }
-
         .hobby-content {
             display: none;
             padding: 0.3rem 0 0.6rem 1.5rem;
@@ -596,7 +394,6 @@
             color: #a0c0a0;
             line-height: 1.6;
         }
-
         .hobby-item.open .hobby-content {
             display: block;
         }
@@ -608,21 +405,17 @@
             gap: 0.5rem;
             cursor: pointer;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
             transition: all 0.2s;
             margin: 2rem 0 0.8rem;
             border-bottom: 1px dashed #2d4a2d;
             padding-bottom: 0.4rem;
         }
-
         .section-header:hover {
             border-bottom-color: #4caf7a;
         }
-
         .section-header:hover .section-arrow {
             color: #8bc34a;
         }
-
         .section-arrow {
             font-size: 0.7rem;
             color: #5a7a5a;
@@ -631,24 +424,294 @@
             width: 14px;
             flex-shrink: 0;
         }
-
         .section-collapsed .section-arrow {
             transform: rotate(-90deg);
         }
-
         .section-body {
             overflow: hidden;
             transition: max-height 0.4s ease, opacity 0.3s ease;
             max-height: 2000px;
             opacity: 1;
         }
-
         .section-collapsed .section-body {
             max-height: 0;
             opacity: 0;
             margin: 0;
         }
+
+        /* === КНОПКА НАВЕРХ === */
+        .scroll-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 200;
+            background: rgba(10, 15, 10, 0.85);
+            border: 1px solid #2d4a2d;
+            color: #8bc34a;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .scroll-top:hover {
+            background: #1f3a1f;
+            border-color: #00ff41;
+            color: #00ff41;
+            box-shadow: 0 0 12px rgba(0, 255, 65, 0.2);
+        }
+
+        /* === СВЕТЛАЯ ТЕМА === */
+        body.light-mode {
+            background: #f5f3ee;
+            color: #1a2a1a;
+        }
+        body.light-mode .terminal {
+            background: rgba(245, 243, 238, 0.95);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+        }
+        body.light-mode .terminal-header {
+            background: #e8e5de;
+            border-bottom-color: #a0b8a0;
+        }
+        body.light-mode .title {
+            color: #3a4a3a;
+        }
+        body.light-mode .dot.red {
+            background: #cc5555;
+        }
+        body.light-mode .dot.yellow {
+            background: #d4a030;
+        }
+        body.light-mode .dot.green {
+            background: #2b8c4a;
+        }
+        body.light-mode .prompt {
+            color: #1f6b2a;
+        }
+        body.light-mode .command {
+            color: #1f4a2a;
+        }
+        body.light-mode .output-block {
+            color: #1a2a1a;
+            border-left-color: #8aaa8a;
+        }
+        body.light-mode .section-title {
+            color: #3a6a3a;
+            border-bottom-color: #8aaa8a;
+        }
+        body.light-mode .highlight {
+            color: #b8860b;
+        }
+        body.light-mode .tag {
+            background: #f0eee8;
+            border-color: #8aaa8a;
+            color: #1a2a1a;
+        }
+        body.light-mode .timeline-item {
+            border-left-color: #8aaa8a;
+        }
+        body.light-mode .timeline-item::before {
+            color: #3a6a3a;
+        }
+        body.light-mode .timeline-date {
+            color: #4a5a4a;
+        }
+        body.light-mode .timeline-title {
+            color: #0a1a0a;
+        }
+        body.light-mode .timeline-desc {
+            color: #2a3a2a;
+        }
+        body.light-mode .contact-inline {
+            color: #1a2a1a;
+        }
+        body.light-mode .contact-inline span {
+            color: #1a4a1a;
+        }
+        body.light-mode .btn {
+            border-color: #6a8a6a;
+            color: #1a2a1a;
+        }
+        body.light-mode .btn:hover {
+            background: #d4ddd4;
+            border-color: #1f6b2a;
+            color: #0a1a0a;
+        }
+        body.light-mode .footer-note {
+            color: #4a5a4a;
+            border-top-color: #8aaa8a;
+        }
+        body.light-mode .lang-switch,
+        body.light-mode .theme-toggle {
+            color: #3a6a3a;
+            border-color: #8aaa8a;
+        }
+        body.light-mode .lang-switch:hover,
+        body.light-mode .theme-toggle:hover {
+            background: #e8e5de;
+            border-color: #1f6b2a;
+            color: #1f4a1f;
+        }
+        body.light-mode a {
+            color: #3a6a3a;
+        }
+        body.light-mode .section-header {
+            border-bottom-color: #8aaa8a;
+        }
+        body.light-mode .hobby-content {
+            color: #2a4a2a;
+        }
+        body.light-mode .hobby-item {
+            border-bottom-color: #c0d0c0;
+        }
+        body.light-mode .scroll-top {
+            background: rgba(240, 238, 232, 0.9);
+            border-color: #8aaa8a;
+            color: #3a6a3a;
+        }
+        body.light-mode .scroll-top:hover {
+            background: #e0ddd5;
+            border-color: #1f6b2a;
+            color: #1f4a1f;
+            box-shadow: 0 0 12px rgba(31, 107, 42, 0.15);
+        }
+        body.light-mode::before {
+            opacity: 0;
+        }
+
+        /* === ПЕЧАТЬ === */
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            html,
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                width: 100% !important;
+                font-size: 11pt !important;
+                color: #000000 !important;
+            }
+            body::before {
+                display: none !important;
+            }
+            .binary-rain,
+            .dead-pixel {
+                display: none !important;
+            }
+            .terminal {
+                max-width: 100% !important;
+                width: 100% !important;
+                background: #ffffff !important;
+                border: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .terminal-header {
+                background: #f5f5f5 !important;
+                border-bottom: 2px solid #000000 !important;
+                border-radius: 0 !important;
+                padding: 0.5rem 1rem !important;
+            }
+            .dot.red,
+            .dot.yellow,
+            .dot.green {
+                background: #000000 !important;
+            }
+            .title {
+                color: #000000 !important;
+            }
+            .lang-switch,
+            .theme-toggle {
+                display: none !important;
+            }
+            .terminal-body {
+                padding: 1rem 0.5rem !important;
+                background: #ffffff !important;
+            }
+            .prompt,
+            .command,
+            .output-block,
+            .section-title,
+            .highlight,
+            .tag,
+            .timeline-item,
+            .timeline-date,
+            .timeline-title,
+            .timeline-desc,
+            .contact-inline,
+            .contact-inline span,
+            .footer-note,
+            .ascii-art,
+            a,
+            strong,
+            span,
+            div,
+            p {
+                color: #000000 !important;
+                background: #ffffff !important;
+                border-color: #000000 !important;
+            }
+            .output-block {
+                border-left: 2px solid #000000 !important;
+            }
+            .section-title {
+                border-bottom: 2px solid #000000 !important;
+            }
+            .tag {
+                border: 1px solid #000000 !important;
+            }
+            .timeline-item {
+                border-left: 2px solid #000000 !important;
+            }
+            .timeline-item::before {
+                color: #000000 !important;
+            }
+            .btn,
+            .btn-full,
+            .scroll-top {
+                display: none !important;
+            }
+            .footer-note {
+                border-top: 2px solid #000000 !important;
+            }
+            a {
+                text-decoration: underline !important;
+            }
+        }
+
+        .name {
+            font-size: 1.3rem;
+            color: #e0f0e0;
+        }
+        body.light-mode .name {
+            color: #1a2a1a;
+        }
     </style>
+
+    <meta name="author" content="@ktoetotchel">
+    <meta property="og:title" content="Резюме | DevOps / QA / Python | Москва">
+    <meta property="og:description" content="Резюме: DevOps, QA, Python-разработка. Опыт, навыки, стек технологий.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
 </head>
 <body>
     <div class="binary-rain" id="rain" aria-hidden="true"></div>
@@ -662,14 +725,17 @@
                 <div class="dot green"></div>
                 <span class="title">root@cv: ~/resume -- vim</span>
             </div>
-            <button class="lang-switch" id="langToggle" aria-label="Переключить язык">EN</button>
+            <div style="display:flex; gap: 0.5rem;">
+                <button class="lang-switch" id="langToggle" aria-label="Переключить язык">EN</button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌙</button>
+            </div>
         </div>
         <div class="terminal-body">
 
             <!-- === ИМЯ И КОНТАКТЫ === -->
             <p><span class="prompt">➜</span> <span class="command">cat /etc/candidate/header.conf</span></p>
             <div class="output-block">
-                <strong style="font-size:1.3rem;color:#e0f0e0;" data-ru="Смыков Дмитрий Владимирович" data-en="Dmitrii Smykov">Смыков Дмитрий Владимирович</strong><br>
+                <strong class="name" data-ru="Смыков Дмитрий Владимирович" data-en="Dmitrii Smykov">Смыков Дмитрий Владимирович</strong><br>
                 <span style="color:#8bc34a;">DevOps / QA Engineer / Python Developer</span><br><br>
                 <div class="contact-inline">
                     <div>📞 <span>+7 (993) 609-03-27</span></div>
@@ -905,18 +971,15 @@
                 function createRain() {
                     const fragment = document.createDocumentFragment();
                     const count = window.innerWidth < 600 ? 30 : 60;
-
                     for (let i = 0; i < count; i++) {
                         const span = document.createElement('span');
                         const left = Math.random() * 100;
                         const delay = Math.random() * 5;
                         const duration = 4 + Math.random() * 8;
-
                         let binaryStr = '';
                         for (let j = 0; j < 10; j++) {
                             binaryStr += Math.random() > 0.5 ? '1' : '0';
                         }
-
                         span.textContent = binaryStr;
                         span.style.cssText = `
                             position: absolute;
@@ -928,11 +991,9 @@
                         `;
                         fragment.appendChild(span);
                     }
-
                     rainDiv.innerHTML = '';
                     rainDiv.appendChild(fragment);
                 }
-
                 if (!document.getElementById('rain-style')) {
                     const styleDrop = document.createElement('style');
                     styleDrop.id = 'rain-style';
@@ -946,9 +1007,7 @@
                     `;
                     document.head.appendChild(styleDrop);
                 }
-
                 createRain();
-
                 window.addEventListener('orientationchange', function() {
                     setTimeout(createRain, 100);
                 });
@@ -957,7 +1016,6 @@
             // Переключатель языка
             const langToggle = document.getElementById('langToggle');
             let currentLang = 'ru';
-
             function switchLanguage(lang) {
                 const elements = document.querySelectorAll('[data-ru][data-en]');
                 elements.forEach(function(el) {
@@ -970,14 +1028,36 @@
                         }
                     }
                 });
-
-                langToggle.textContent = lang === 'ru' ? 'EN' : 'RU';
+                if (langToggle) langToggle.textContent = lang === 'ru' ? 'EN' : 'RU';
+            }
+            if (langToggle) {
+                langToggle.addEventListener('click', function() {
+                    currentLang = currentLang === 'ru' ? 'en' : 'ru';
+                    switchLanguage(currentLang);
+                });
             }
 
-            langToggle.addEventListener('click', function() {
-                currentLang = currentLang === 'ru' ? 'en' : 'ru';
-                switchLanguage(currentLang);
-            });
+            // Кнопка "Наверх"
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (scrollTopBtn) {
+                function checkScroll() {
+                    const scrollY = document.documentElement.scrollTop || document.body.scrollTop || window.scrollY;
+                    if (scrollY > 400) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                }
+                window.addEventListener('scroll', checkScroll, { passive: true });
+                document.addEventListener('scroll', checkScroll, { passive: true });
+                checkScroll();
+
+                scrollTopBtn.addEventListener('click', function() {
+                    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+                    document.body.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
 
             // Мерцание пикселя
             const deadPixel = document.querySelector('.dead-pixel');
@@ -986,7 +1066,17 @@
                     deadPixel.style.opacity = (Math.random() * 0.6 + 0.4).toString();
                 }, 500);
             }
+
+            // Переключение темы (день/ночь)
+            const themeToggle = document.getElementById('themeToggle');
+            let isLightMode = false;
+
+            themeToggle.addEventListener('click', function() {
+                isLightMode = !isLightMode;
+                document.body.classList.toggle('light-mode', isLightMode);
+            });
         })();
     </script>
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'});document.documentElement.scrollTop=0;document.body.scrollTop=0;" aria-label="Наверх" title="Наверх">↑</button>
 </body>
 </html>
