@@ -1076,7 +1076,38 @@
                 document.body.classList.toggle('light-mode', isLightMode);
             });
         })();
+
+        // Счетчик просмотров через countapi.xyz (только для вас)
+        const counterKey = 'resume.visits';
+
+        async function updateCounter() {
+            try {
+                const response = await fetch(`https://api.countapi.xyz/hit/${counterKey}`);
+                const data = await response.json();
+                document.getElementById('counterValue').textContent = data.value;
+            } catch (error) {
+                document.getElementById('counterValue').textContent = '❌';
+            }
+        }
+
+        // Показываем по Ctrl+Shift+V
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'v' || e.key === 'V')) {
+                e.preventDefault();
+                const counterDiv = document.getElementById('visitCounter');
+                if (counterDiv.style.display === 'none' || counterDiv.style.display === '') {
+                    counterDiv.style.display = 'block';
+                    updateCounter();
+                } else {
+                    counterDiv.style.display = 'none';
+                }
+            }
+        });
     </script>
     <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'});document.documentElement.scrollTop=0;document.body.scrollTop=0;" aria-label="Наверх" title="Наверх">↑</button>
+
+    <div id="visitCounter" style="display:none; margin-top:1rem; padding:0.5rem; border:1px dashed #2d4a2d; border-radius:4px; font-size:0.8rem; color:#5a735a; text-align:center;">
+        🌍 Всего просмотров: <span id="counterValue">Загрузка...</span>
+    </div>
 </body>
 </html>
