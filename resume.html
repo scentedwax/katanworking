@@ -1077,26 +1077,25 @@
             });
         })();
 
-        // Счетчик просмотров через countapi.xyz
-        const counterKey = 'resume.visits';
+        // Альтернативный сервис - Counter.Dev
+        const siteId = 'katan_resume'; // ваше уникальное имя
 
         async function updateCounter() {
             try {
-                // Используем https://countapi.xyz (без api. в начале)
-                const response = await fetch(`https://countapi.xyz/hit/${counterKey}`);
+                // Отправляем запрос на увеличение счетчика
+                await fetch(`https://counter.dev/hit?site=${siteId}&page=resume`);
+
+                // Получаем общую статистику
+                const response = await fetch(`https://counter.dev/stats/${siteId}`);
                 const data = await response.json();
-                document.getElementById('counterValue').textContent = data.value;
+                document.getElementById('counterValue').textContent = data.total || 0;
             } catch (error) {
-                console.log('Counter error:', error);
-                // Если сервис недоступен, показываем локальный счетчик
-                const localCount = localStorage.getItem('localCounter') || 0;
-                const newCount = parseInt(localCount) + 1;
-                localStorage.setItem('localCounter', newCount);
-                document.getElementById('counterValue').textContent = newCount + ' (локально)';
+                console.error('Counter error:', error);
+                document.getElementById('counterValue').textContent = '⚠️';
             }
         }
 
-        // Показываем по Ctrl+Shift+V
+        // Показываем счетчик по Ctrl+Shift+V
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.shiftKey && (e.key === 'v' || e.key === 'V')) {
                 e.preventDefault();
