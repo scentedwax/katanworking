@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Контакты</title>
+    <meta name="description" content="Социальные сети и контакты">
+    <meta name="robots" content="index, follow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        body {
+            background: #0a0c0f;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            color: #b7e4b0;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.7;
+        }
+
+        .dead-pixel {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #ff00c8;
+            box-shadow: 0 0 8px #ff00c8;
+            z-index: 101;
+            pointer-events: none;
+            opacity: 0.9;
+            top: 50%;
+            left: 50%;
+            animation: wander 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes wander {
+            0% { transform: translate(-45vw, -40vh); }
+            20% { transform: translate(40vw, 30vh); }
+            40% { transform: translate(20vw, -20vh); }
+            60% { transform: translate(-30vw, 20vh); }
+            80% { transform: translate(-5vw, -35vh); }
+            100% { transform: translate(-40vw, 35vh); }
+        }
+
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            font-size: 0.7rem;
+            color: #00ff41;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #1a241a;
+            padding: 0.7rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #2d4a2d;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .title {
+            margin-left: 0.8rem;
+            font-size: 0.75rem;
+            color: #5e7a5e;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .lang-switch {
+            font-family: inherit;
+            font-size: 0.7rem;
+            color: #8bc34a;
+            background: transparent;
+            border: 1px solid #2d4a2d;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .lang-switch:hover {
+            background: #121a12;
+            border-color: #00ff41;
+            color: #00ff41;
+        }
+        .lang-switch:active {
+            transform: scale(0.95);
+        }
+
+        .terminal-body {
+            padding: 1.8rem 1rem;
+            position: relative;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .intro-text {
+            color: #c5f0c5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            color: #8bc34a;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2rem 0 0.8rem;
+            border-bottom: 1px dashed #2d4a2d;
+            padding-bottom: 0.4rem;
+        }
+
+        /* Сетка социальных сетей */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #2d4a2d;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #8bc34a;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .social-card:hover {
+            border-color: #4caf7a;
+            background: rgba(255,255,255,0.06);
+            transform: translateX(4px);
+            box-shadow: 0 0 30px rgba(76, 175, 122, 0.1);
+        }
+
+        .social-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .social-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(139, 195, 74, 0.08);
+            border: 1px solid #2d4a2d;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-card:hover .social-icon {
+            background: rgba(139, 195, 74, 0.15);
+            border-color: #8bc34a;
+        }
+
+        .social-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .social-name {
+            color: #e0f0e0;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .social-handle {
+            color: #8bc34a;
+            font-size: 0.78rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .social-desc {
+            color: #5a7a5a;
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .social-arrow {
+            color: #5a7a5a;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .social-card:hover .social-arrow {
+            color: #00ff41;
+            transform: translateX(4px);
+        }
+
+        @media screen and (max-width: 600px) {
+            .terminal-body {
+                padding: 1.2rem 0.8rem;
+            }
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .terminal-header {
+                padding: 0.6rem 0.8rem;
+            }
+            .intro-text {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            .title {
+                font-size: 0.65rem;
+            }
+            .social-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="binary-rain" id="rain" aria-hidden="true"></div>
+    <div class="dead-pixel" aria-hidden="true"></div>
+
+    <header class="terminal-header">
+        <div class="header-left">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <span class="title">root@cv: ~/contacts -- vim</span>
+        </div>
+        <button class="lang-switch" id="langToggle" aria-label="Переключить язык">EN</button>
+    </header>
+
+    <main class="terminal-body" role="main">
+
+        <p class="intro-text" data-ru="Спасибо, что заглянули. Буду рад связаться по любому из удобных каналов — открыт к общению, предложениям и новым знакомствам." data-en="Thanks for stopping by. Feel free to reach out through any of the channels below — I'm open to conversations, opportunities and new connections.">
+            Спасибо, что заглянули. Буду рад связаться по любому из удобных каналов — открыт к общению, предложениям и новым знакомствам.
+        </p>
+
+        <div class="section-title" data-ru="// Социальные сети" data-en="// Social Networks">// Социальные сети</div>
+
+        <div class="social-grid">
+
+            <!-- Telegram -->
+            <a href="https://t.me/ktoetotchel" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-icon">✈</div>
+                <div class="social-info">
+                    <div class="social-name">Telegram</div>
+                    <div class="social-handle">@ktoetotchel</div>
+                    <div class="social-desc" data-ru="самый быстрый способ" data-en="fastest way to reach me">самый быстрый способ</div>
+                </div>
+                <div class="social-arrow">→</div>
+            </a>
+
+            <!-- VK -->
+            <a href="https://vk.com/smikov11" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-icon">В</div>
+                <div class="social-info">
+                    <div class="social-name">VK</div>
+                    
+                    <div class="social-desc" data-ru="личная страница" data-en="personal page">личная страница</div>
+                </div>
+                <div class="social-arrow">→</div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/scentedwax" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-icon">◆</div>
+                <div class="social-info">
+                    <div class="social-name">GitHub</div>
+                    <div class="social-handle">scentedwax</div>
+                    <div class="social-desc" data-ru="код и проекты" data-en="code & projects">код и проекты</div>
+                </div>
+                <div class="social-arrow">→</div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:shonpit2101@gmail.com" class="social-card">
+                <div class="social-icon">@</div>
+                <div class="social-info">
+                    <div class="social-name">Email</div>
+                    <div class="social-handle">shonpit2101@gmail.com</div>
+                    <div class="social-desc" data-ru="для официальных запросов" data-en="for official requests">для официальных запросов</div>
+                </div>
+                <div class="social-arrow">→</div>
+            </a>
+
+            <!-- Phone -->
+            <a href="tel:+79885400338" class="social-card">
+                <div class="social-icon">☎</div>
+                <div class="social-info">
+                    <div class="social-name" data-ru="Телефон" data-en="Phone">Телефон</div>
+                    <div class="social-handle">+7 (988) 540-03-38</div>
+                    <div class="social-desc" data-ru="звонок или SMS" data-en="call or SMS">звонок или SMS</div>
+                </div>
+                <div class="social-arrow">→</div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <script>
+        (function() {
+            // Бинарный дождь
+            const rainDiv = document.getElementById('rain');
+            if (rainDiv) {
+                function createRain() {
+                    const fragment = document.createDocumentFragment();
+                    const count = window.innerWidth < 600 ? 30 : 60;
+                    for (let i = 0; i < count; i++) {
+                        const span = document.createElement('span');
+                        const left = Math.random() * 100;
+                        const delay = Math.random() * 5;
+                        const duration = 4 + Math.random() * 8;
+                        let binaryStr = '';
+                        for (let j = 0; j < 10; j++) {
+                            binaryStr += Math.random() > 0.5 ? '1' : '0';
+                        }
+                        span.textContent = binaryStr;
+                        span.style.cssText = `
+                            position: absolute;
+                            left: ${left}%;
+                            top: -20px;
+                            animation: drop ${duration}s ${delay}s linear infinite;
+                            white-space: nowrap;
+                            pointer-events: none;
+                        `;
+                        fragment.appendChild(span);
+                    }
+                    rainDiv.innerHTML = '';
+                    rainDiv.appendChild(fragment);
+                }
+                if (!document.getElementById('rain-style')) {
+                    const styleDrop = document.createElement('style');
+                    styleDrop.id = 'rain-style';
+                    styleDrop.textContent = `
+                        @keyframes drop {
+                            0% { transform: translateY(-10vh); opacity: 0; }
+                            10% { opacity: 1; }
+                            90% { opacity: 1; }
+                            100% { transform: translateY(110vh); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(styleDrop);
+                }
+                createRain();
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(createRain, 100);
+                });
+            }
+
+            // Переключатель языка
+            const langToggle = document.getElementById('langToggle');
+            let currentLang = 'ru';
+            function switchLanguage(lang) {
+                const elements = document.querySelectorAll('[data-ru][data-en]');
+                elements.forEach(function(el) {
+                    const newContent = el.getAttribute('data-' + lang);
+                    if (newContent !== null) {
+                        el.textContent = newContent;
+                    }
+                });
+                if (langToggle) langToggle.textContent = lang === 'ru' ? 'EN' : 'RU';
+            }
+            if (langToggle) {
+                langToggle.addEventListener('click', function() {
+                    currentLang = currentLang === 'ru' ? 'en' : 'ru';
+                    switchLanguage(currentLang);
+                });
+            }
+
+            // Мерцание пикселя
+            const deadPixel = document.querySelector('.dead-pixel');
+            if (deadPixel) {
+                setInterval(function() {
+                    deadPixel.style.opacity = (Math.random() * 0.6 + 0.4).toString();
+                }, 500);
+            }
+        })();
+    </script>
+</body>
+</html>
