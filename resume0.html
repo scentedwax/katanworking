@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dmitrii Smykov — DevOps Engineer</title>
+<style>
+  :root {
+    --text: #111;
+    --muted: #333;
+    --soft: #555;
+    --line: #999;
+    --font-size: 10.5pt;
+    --line-height: 1.4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    color: var(--text);
+    background: #f5f5f5;
+  }
+
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 14mm 15mm;
+    min-height: 100vh;
+  }
+
+  .name {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 0 0 2px 0;
+  }
+
+  .role {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+  }
+
+  .contact, .meta {
+    margin: 0 0 3px 0;
+    color: var(--muted);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .contact a, .meta a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    margin-top: 14px;
+  }
+
+  .section-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    margin: 0 0 6px 0;
+  }
+
+  .job { font-weight: bold; margin: 0 0 2px 0; }
+  .company { font-style: italic; color: #444; margin: 0 0 2px 0; }
+  .dates { color: var(--soft); margin: 0 0 4px 0; }
+
+  p { margin: 0 0 6px 0; }
+  ul { margin: 4px 0 6px 0; padding-left: 18px; }
+  li { margin: 0 0 3px 0; }
+
+  .skills p { margin: 0 0 4px 0; }
+
+  /* === Планшеты === */
+  @media (max-width: 900px) {
+    :root { --font-size: 11pt; }
+    .page { padding: 20px 22px; }
+    .name { font-size: 1.6rem; }
+    .role { font-size: 1.1rem; }
+  }
+
+  /* === Мобильные === */
+  @media (max-width: 600px) {
+    :root { --font-size: 11pt; --line-height: 1.45; }
+    body { background: #fff; }
+    .page {
+      padding: 16px 14px;
+      max-width: 100%;
+      min-height: auto;
+    }
+    .name { font-size: 1.5rem; }
+    .role { font-size: 1.05rem; }
+    .section-title { font-size: 1rem; }
+    ul { padding-left: 16px; }
+    .contact, .meta { font-size: 0.95rem; }
+  }
+
+  /* === Очень узкие экраны === */
+  @media (max-width: 380px) {
+    :root { --font-size: 10pt; }
+    .page { padding: 12px 10px; }
+    .name { font-size: 1.35rem; }
+    .role { font-size: 1rem; }
+  }
+
+  /* === Печать / PDF === */
+  @media print {
+    @page { size: A4; margin: 14mm 15mm; }
+
+    html, body {
+      background: #fff;
+      font-size: 10.5pt;
+      line-height: 1.4;
+    }
+
+    .page {
+      max-width: none;
+      width: auto;
+      margin: 0;
+      padding: 0;
+      min-height: auto;
+      background: #fff;
+    }
+
+    .section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    ul { padding-left: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="name">Dmitrii Smykov</div>
+  <div class="role">DevOps Engineer</div>
+
+  <div class="contact">Belgrade, Serbia | Open to relocation and remote | +381 63 804 0623 | shonpit2101@gmail.com</div>
+  <div class="contact">Telegram: @ktoetotchel | GitHub: github.com/scentedwax</div>
+  <div class="meta">Work format: Office, Hybrid, Remote, Relocation | Full-time, available immediately</div>
+  <div class="meta">Work authorization: Russian citizen. Requires employer-assisted work and residence permit. Open to relocation and remote roles.</div>
+
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <p>DevOps Engineer with 4+ years of experience in CI/CD, containerization, and monitoring. Built CI/CD from scratch in Drone CI, supported 8+ pipelines, reduced production incidents by 50% via Prometheus/Grafana. Strong in Docker, Linux, Python/Bash automation, and QA automation. Looking for a DevOps role with relocation or remote (full-time employment).</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Key Achievements</div>
+    <ul>
+      <li>Built the CI/CD process from scratch — no automated build pipeline existed before</li>
+      <li>Maintained ~8 CI/CD pipelines in Drone CI simultaneously</li>
+      <li>Wrote 80+ automated tests, reaching 70% coverage on the web project</li>
+      <li>Reduced production incidents by 50% by implementing Prometheus/Grafana monitoring</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+    <div class="job">DevOps Engineer</div>
+    <div class="company">JSC MERI — R&amp;D institute in microelectronics</div>
+    <div class="dates">April 2022 — August 2026</div>
+    <ul>
+      <li>Built the CI/CD process from scratch in Drone CI — no automated build pipeline existed before</li>
+      <li>Maintained ~8 CI/CD pipelines simultaneously</li>
+      <li>Wrote 80+ automated tests (Robot Framework, Selenium, pytest), reaching 70% coverage on the web project</li>
+      <li>Set up monitoring (Prometheus, Grafana) — reduced production incidents by 50%</li>
+      <li>Containerized services (Docker, Docker Compose); wrote Python and Bash scripts</li>
+      <li>Collaborated with the development team on deployment and code review</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Projects</div>
+    <div class="job">Telegram Bot for an English Tutor</div>
+    <div class="dates">2023 — 2024</div>
+    <ul>
+      <li>Designed and built a bot from scratch: movie clips with English phrases, idioms and expressions, guessing actors by voice, Anki-style flashcards</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills">
+      <p><strong>Core:</strong> Linux, Git, Docker, Docker Compose, CI/CD, Drone CI, GitLab CI, Prometheus, Grafana, Nginx, Python, Bash</p>
+      <p><strong>Additional:</strong> Kubernetes, Terraform, AWS, EC2, Ansible, Vault, Harbor</p>
+      <p><strong>QA &amp; Testing:</strong> pytest, Selenium, Postman, Robot Framework, test design, REST API</p>
+      <p><strong>Other:</strong> FastAPI, Requests, Kivy, Qt, Agile/Scrum, Code Review</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="job">MIET (National Research University of Electronic Technology)</div>
+    <div class="dates">2018 — 2022</div>
+    <p>Bachelor's degree in Electronics and Nanoelectronics, full-time</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Languages</div>
+    <p>Russian — Native | English — B2</p>
+  </div>
+
+</div>
+
+</body>
+</html>
