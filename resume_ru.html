@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дмитрий Смыков — DevOps-инженер</title>
+<style>
+  :root {
+    --text: #111;
+    --muted: #333;
+    --soft: #555;
+    --line: #999;
+    --font-size: 10.5pt;
+    --line-height: 1.4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    color: var(--text);
+    background: #f5f5f5;
+  }
+
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 14mm 15mm;
+    min-height: 100vh;
+  }
+
+  .name {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 0 0 2px 0;
+  }
+
+  .role {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+  }
+
+  .contact, .meta {
+    margin: 0 0 3px 0;
+    color: var(--muted);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    margin-top: 14px;
+  }
+
+  .section-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    margin: 0 0 6px 0;
+  }
+
+  .job { font-weight: bold; margin: 0 0 2px 0; }
+  .company { font-style: italic; color: #444; margin: 0 0 2px 0; }
+  .dates { color: var(--soft); margin: 0 0 4px 0; }
+
+  p { margin: 0 0 6px 0; }
+  ul { margin: 4px 0 6px 0; padding-left: 18px; }
+  li { margin: 0 0 3px 0; }
+
+  .skills p { margin: 0 0 4px 0; }
+
+  @media (max-width: 900px) {
+    :root { --font-size: 11pt; }
+    .page { padding: 20px 22px; }
+    .name { font-size: 1.6rem; }
+    .role { font-size: 1.1rem; }
+  }
+
+  @media (max-width: 600px) {
+    :root { --font-size: 11pt; --line-height: 1.45; }
+    body { background: #fff; }
+    .page {
+      padding: 16px 14px;
+      max-width: 100%;
+      min-height: auto;
+    }
+    .name { font-size: 1.5rem; }
+    .role { font-size: 1.05rem; }
+    .section-title { font-size: 1rem; }
+    ul { padding-left: 16px; }
+    .contact, .meta { font-size: 0.95rem; }
+  }
+
+  @media (max-width: 380px) {
+    :root { --font-size: 10pt; }
+    .page { padding: 12px 10px; }
+    .name { font-size: 1.35rem; }
+    .role { font-size: 1rem; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 14mm 15mm; }
+
+    html, body {
+      background: #fff;
+      font-size: 10.5pt;
+      line-height: 1.4;
+    }
+
+    .page {
+      max-width: none;
+      width: auto;
+      margin: 0;
+      padding: 0;
+      min-height: auto;
+      background: #fff;
+    }
+
+    .section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    ul { padding-left: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="name">Дмитрий Смыков</div>
+  <div class="role">DevOps-инженер</div>
+
+  <div class="contact">Белград, Сербия | Открыт к релокации и удалёнке | +381 63 804 0623 | shonpit2101@gmail.com</div>
+  <div class="contact">Telegram: @ktoetotchel | GitHub: github.com/scentedwax</div>
+  <div class="meta">Формат работы: офис, гибрид, удалённо, релокация | Полная занятость, готов выйти сразу</div>
+  <div class="meta">Разрешение на работу: гражданин РФ. Требуется оформление разрешения на работу и ВНЖ через работодателя. Открыт к релокации и удалённым ролям.</div>
+
+  <div class="section">
+    <div class="section-title">О себе</div>
+    <p>DevOps-инженер с опытом 4+ года в CI/CD, контейнеризации и мониторинге. Построил CI/CD с нуля в Drone CI, поддерживал 8+ пайплайнов, сократил количество продакшн-инцидентов на 50% через Prometheus/Grafana. Сильные стороны — Docker, Linux, автоматизация на Python и Bash, автоматизация тестирования. Ищу роль DevOps-инженера с релокацией или удалённо (полная занятость).</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Ключевые достижения</div>
+    <ul>
+      <li>Построил процесс CI/CD с нуля — до этого автоматической сборки не было</li>
+      <li>Поддерживал ~8 пайплайнов CI/CD в Drone CI одновременно</li>
+      <li>Написал 80+ автотестов, довёл покрытие веб-проекта до 70%</li>
+      <li>Снизил количество продакшн-инцидентов на 50% за счёт внедрения мониторинга Prometheus/Grafana</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Опыт работы</div>
+    <div class="job">DevOps-инженер</div>
+    <div class="company">АО MERI — НИИ микроэлектроники</div>
+    <div class="dates">Апрель 2022 — Август 2026</div>
+    <ul>
+      <li>Построил процесс CI/CD с нуля в Drone CI — до этого автоматической сборки не было</li>
+      <li>Поддерживал ~8 пайплайнов CI/CD одновременно</li>
+      <li>Написал 80+ автотестов (Robot Framework, Selenium, pytest), довёл покрытие веб-проекта до 70%</li>
+      <li>Настроил мониторинг (Prometheus, Grafana) — снизил количество продакшн-инцидентов на 50%</li>
+      <li>Контейнеризировал сервисы (Docker, Docker Compose), писал скрипты на Python и Bash</li>
+      <li>Взаимодействовал с командой разработки по деплою и code review</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Проекты</div>
+    <div class="job">Telegram-бот для репетитора английского языка</div>
+    <div class="dates">2023 — 2024</div>
+    <ul>
+      <li>Разработал бота с нуля: отрывки из фильмов с английскими фразами, идиомы и речевые обороты, угадывание актёров по голосу, карточки в формате Anki</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Навыки</div>
+    <div class="skills">
+      <p><strong>Основное:</strong> Linux, Git, Docker, Docker Compose, CI/CD, Drone CI, GitLab CI, Prometheus, Grafana, Nginx, Python, Bash</p>
+      <p><strong>Дополнительно:</strong> Kubernetes, Terraform, AWS, EC2, Ansible, Vault, Harbor</p>
+      <p><strong>QA и тестирование:</strong> pytest, Selenium, Postman, Robot Framework, тест-дизайн, REST API</p>
+      <p><strong>Прочее:</strong> FastAPI, Requests, Kivy, Qt, Agile/Scrum, code review</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Образование</div>
+    <div class="job">МИЭТ (Национальный исследовательский университет электронных технологий)</div>
+    <div class="dates">2018 — 2022</div>
+    <p>Бакалавр по направлению «Электроника и наноэлектроника», очная форма</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Языки</div>
+    <p>Русский — родной | Английский — B2</p>
+  </div>
+
+</div>
+
+</body>
+</html>
